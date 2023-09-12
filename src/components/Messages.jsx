@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import styles from "../styles/Home.module.css";
 
 const Messages = ({ messages, me }) => {
     const bottomRef = useRef(null);
@@ -8,8 +9,8 @@ const Messages = ({ messages, me }) => {
         }
     });
     return (
-        <ul>
-            {messages.map()}
+        <ul className={styles.messagesList}>
+            <div>Hello</div>
             <div ref={bottomRef}></div>
         </ul>
     );
