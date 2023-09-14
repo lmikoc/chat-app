@@ -24,7 +24,7 @@ const App = () => {
     return (
         <main className={styles.app}>
             <div className={styles.appContent}>
-                <Messages />
+                <Messages messages={messages} me={me} />
             </div>
         </main>
     );
