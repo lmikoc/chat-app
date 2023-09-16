@@ -9,8 +9,8 @@ const Input = ({ onSendMessage }) => {
     };
     const onSubmit = (e) => {
         e.preventDefault();
-        setText("");
         onSendMessage(text);
+        setText("");
     };
     return (
         <div className={styles.input}>

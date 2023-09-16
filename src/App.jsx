@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Messages from "./components/Messages";
 import { randomColor, randomName } from "./utils/generateRandomNameAndColor";
 import styles from "../src/styles/Home.module.css";
+import Input from "./components/Input";
 
 const App = () => {
     const [messages, setMessages] = useState([
@@ -21,10 +22,20 @@ const App = () => {
         username: randomName(),
         color: randomColor()
     });
+    const onSendMessage = (message) => {
+        const newMessage = {
+            data: message,
+            member: {
+                clientData: me
+            }
+        };
+        setMessages([...messages, newMessage]);
+    };
     return (
         <main className={styles.app}>
             <div className={styles.appContent}>
                 <Messages messages={messages} me={me} />
+                <Input onSendMessage={onSendMessage} />
             </div>
         </main>
     );
