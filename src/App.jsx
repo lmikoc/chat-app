@@ -3,6 +3,7 @@ import Messages from "./components/Messages";
 import { randomColor, randomName } from "./utils/generateRandomNameAndColor";
 import styles from "../src/styles/Home.module.css";
 import Input from "./components/Input";
+import Members from "./components/Members";
 
 const App = () => {
     const [messages, setMessages] = useState([
@@ -22,6 +23,15 @@ const App = () => {
         username: randomName(),
         color: randomColor()
     });
+    const [members, setMembers] = useState([
+        {
+            id: "1",
+            clientData: {
+                color: "blue",
+                username: "bluemoon"
+            }
+        }
+    ]);
     const onSendMessage = (message) => {
         const newMessage = {
             data: message,
@@ -34,6 +44,7 @@ const App = () => {
     return (
         <main className={styles.app}>
             <div className={styles.appContent}>
+                <Members members={members} me={me} />
                 <Messages messages={messages} me={me} />
                 <Input onSendMessage={onSendMessage} />
             </div>
