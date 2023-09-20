@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Messages from "./components/Messages";
 import { randomColor, randomName } from "./utils/generateRandomNameAndColor";
 import styles from "../src/styles/Home.module.css";
-import Input from "./components/Input";
+import Input from "./Input";
 import Members from "./components/Members";
 
 const App = () => {
     const [messages, setMessages] = useState([
         {
             id: "1",
-            data: "This is a test message!",
+            data: process.env.REACT_APP_CHANNELID,
             member: {
                 id: "1",
                 clientData: {
