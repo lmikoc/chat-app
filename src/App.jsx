@@ -42,7 +42,7 @@ const App = () => {
                 setMessages([...messagesRef.current, message]);
             });
             room.on("members", (members) => {
-                setMembers([members]);
+                setMembers(members);
             });
             room.on("member_join", (member) => {
                 setMembers([...membersRef.current, member]);
