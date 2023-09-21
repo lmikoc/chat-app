@@ -22,7 +22,7 @@ const App = () => {
     const meRef = useRef();
     meRef.current = me;
     const connectToScaleDrone = () => {
-        drone = new window.Scaledrone(process.REACT_APP_CHANNELID, {
+        drone = new window.Scaledrone(process.env.REACT_APP_CHANNELID, {
             data: meRef.current
         });
         drone.on("open", (error) => {
