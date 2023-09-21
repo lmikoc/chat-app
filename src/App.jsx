@@ -36,7 +36,7 @@ const App = () => {
     useEffect(() => {
         if (drone === null) {
             connectToScaleDrone();
-            room = drone.subscribe("observable-chatAppTest");
+            room = drone.subscribe("observable-room");
             room.on("message", (message) => {
                 const { data, member } = message;
                 setMessages([...messagesRef.current, message]);
