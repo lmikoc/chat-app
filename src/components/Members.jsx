@@ -9,7 +9,7 @@ const Members = ({ members, me }) => {
                 {members.lenght} user{members.lenght === 1 ? "" : "s"} online
             </div>
             <div className={styles.membersList}>
-                {members.map((ms) => ms.map((m) => Member(m, m.id === me.id)))}
+                {members.map((m) => Member(m, m.id === me.id))}
             </div>
         </div>
     );
