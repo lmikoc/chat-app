@@ -19,7 +19,7 @@ const Input = ({ onSendMessage, onChangeTypingState }) => {
     useEffect(() => {
         if (typingIndicator === null) {
             typingIndicator = new TypingIndicator();
-            typingIndicator.listen((isTyping) => onChangeTypingState(isTyping));
+            typingIndicator.listen(onChangeTypingState);
         }
     }, []);
     return (

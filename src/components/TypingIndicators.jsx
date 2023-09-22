@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
 
-const TypingIndicators = ({ members }) => {
-    const names = members.map((m) => m.clientData.username);
+const TypingIndicators = ({ messages }) => {
+    const names = messages.map((m) => m.member.clientData.username);
     if (names.length === 0) {
-        return <div className={styles.typingIndicator}></div>;
+        return <div className={styles.typingIndicator}>aaaaaaaaaaaaaaa</div>;
     } else if (names.length === 1) {
         return (
             <div className={styles.typingIndicator}>{names[0]} is typing</div>
