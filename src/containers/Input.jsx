@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+import TypingIndicator from "typing-indicator";
 
-const Input = ({ onSendMessage }) => {
+let typingIndicator = null;
+
+const Input = ({ onSendMessage, onChangeTypingState }) => {
     const [text, setText] = useState("");
     const onChange = (e) => {
         const text = e.target.value;
+        typingIndicator.onChange(text);
         setText(text);
     };
     const onSubmit = (e) => {
@@ -12,6 +16,12 @@ const Input = ({ onSendMessage }) => {
         onSendMessage(text);
         setText("");
     };
+    useEffect(() => {
+        if (typingIndicator === null) {
+            typingIndicator = new TypingIndicator();
+            typingIndicator.listen((isTyping) => onChangeTypingState(isTyping));
+        }
+    }, []);
     return (
         <div className={styles.input}>
             <form onSubmit={onSubmit}>
