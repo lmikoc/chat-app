@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Messages from "./components/Messages";
 import { randomColor, randomName } from "./utils/generateRandomNameAndColor";
 import styles from "../src/styles/Home.module.css";
-import Input from "./Input";
+import Input from "./containers/Input";
 import Members from "./components/Members";
 
 let drone = null;
