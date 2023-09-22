@@ -82,7 +82,9 @@ const App = () => {
                 <Members members={members} me={me} />
                 <Messages messages={messages} me={me} />
                 <TypingIndicators
-                    members={members.filter((m) => m.typing && m.id !== me.id)}
+                    messages={messages.filter(
+                        (m) => m.data.typing && m.member.id !== me.id
+                    )}
                 />
                 <Input
                     onSendMessage={onSendMessage}
