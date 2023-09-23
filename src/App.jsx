@@ -35,13 +35,13 @@ const App = () => {
         const room = drone.subscribe("observable-room");
         room.on("message", (message) => {
             const { data, member } = message;
-            if (
-                typeof data === "object" &&
-                typeof data.isTyping === "boolean"
-            ) {
-                const m = membersRef.current.find((m) => m.id === member.id);
-                m.typing = data.typing;
-                setMembers(membersRef.current);
+            if (typeof data === "object" && typeof data.typing === "boolean") {
+                const index = membersRef.current.findIndex(
+                    (m) => m.id === member.id
+                );
+                membersRef.current[index].typing = data.typing;
+                const newMembers = [...membersRef.current];
+                setMembers(newMembers);
             } else {
                 setMessages([...messagesRef.current, message]);
             }
@@ -65,10 +65,12 @@ const App = () => {
         }
     }, []);
     const onSendMessage = (message) => {
-        drone.publish({
-            room: "observable-room",
-            message
-        });
+        if (message) {
+            drone.publish({
+                room: "observable-room",
+                message
+            });
+        }
     };
     const onChangeTypingState = (isTyping) => {
         drone.publish({
@@ -82,9 +84,7 @@ const App = () => {
                 <Members members={members} me={me} />
                 <Messages messages={messages} me={me} />
                 <TypingIndicators
-                    messages={messages.filter(
-                        (m) => m.data.typing && m.member.id !== me.id
-                    )}
+                    members={members.filter((m) => m.typing && m.id !== me.id)}
                 />
                 <Input
                     onSendMessage={onSendMessage}
