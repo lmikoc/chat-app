@@ -14,8 +14,7 @@ const Input = ({ onSendMessage, onChangeTypingState }) => {
     };
     const onChangeFile = (e) => {
         const files = e.target.files;
-        console.log(files);
-        setFiles(files);
+        setFiles([...files]);
     };
     const onSubmit = (e) => {
         e.preventDefault();
