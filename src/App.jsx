@@ -64,11 +64,12 @@ const App = () => {
             connectToScaleDrone();
         }
     }, []);
-    const onSendMessage = (message) => {
-        if (message) {
+    const onSendMessage = (message, files) => {
+        if (message || files.length > 0) {
+            console.log("a");
             drone.publish({
                 room: "observable-room",
-                message
+                message: { message: message, files: files }
             });
         }
     };

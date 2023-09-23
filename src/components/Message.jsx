@@ -15,7 +15,7 @@ const Message = ({ member, data, id }, me) => {
             />
             <div className={styles.messageContent}>
                 <div className={styles.username}>{username}</div>
-                <div className={styles.text}>{data}</div>
+                <div className={styles.text}>{data.message}</div>
             </div>
         </li>
     );
