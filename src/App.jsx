@@ -5,6 +5,7 @@ import styles from "../src/styles/Home.module.css";
 import Input from "./containers/Input";
 import Members from "./components/Members";
 import TypingIndicators from "./components/TypingIndicators";
+import toBase64 from "./utils/FileToBase64";
 
 let drone = null;
 
@@ -64,12 +65,21 @@ const App = () => {
             connectToScaleDrone();
         }
     }, []);
-    const onSendMessage = (message, files) => {
+    const onSendMessage = async (message, files) => {
         if (message || files.length > 0) {
-            console.log("a");
+            const filesBase64 = [];
+            if (files.length > 0) {
+                for (const file of files) {
+                    filesBase64.push({
+                        file: await toBase64(file),
+                        fileName: file.name
+                    });
+                }
+            }
+            console.log(filesBase64);
             drone.publish({
                 room: "observable-room",
-                message: { message: message, files: files }
+                message: { message: message, files: filesBase64 }
             });
         }
     };
