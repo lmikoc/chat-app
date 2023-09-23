@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
-import TypingIndicator from "typing-indicator";
+import IsTyping from "typing-indicator";
 
 let typingIndicator = null;
 
@@ -18,7 +18,7 @@ const Input = ({ onSendMessage, onChangeTypingState }) => {
     };
     useEffect(() => {
         if (typingIndicator === null) {
-            typingIndicator = new TypingIndicator();
+            typingIndicator = new IsTyping();
             typingIndicator.listen(onChangeTypingState);
         }
     }, []);
