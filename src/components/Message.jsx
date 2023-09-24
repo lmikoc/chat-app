@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 
 const Message = ({ member, data, id }, me) => {
-    console.log(data);
     const { username, color } = member.clientData;
     const messageFromMe = member.id === me.id;
     const className = messageFromMe
@@ -39,6 +38,7 @@ const Message = ({ member, data, id }, me) => {
                               return (
                                   <div key={index}>
                                       <a
+                                          className={styles.vn}
                                           href={window.URL.createObjectURL(
                                               blob
                                           )}

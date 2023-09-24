@@ -76,7 +76,6 @@ const App = () => {
                     });
                 }
             }
-            console.log(filesBase64);
             drone.publish({
                 room: "observable-room",
                 message: { message: message, files: filesBase64 }
