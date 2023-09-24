@@ -115,3 +115,35 @@
     color: gray;
     font-size: 14px;
 }
+
+.messageContent > .text .vn {
+    text-decoration: none;
+    background-color: #b92b29;
+    display: inline-block;
+    position: relative;
+    margin: 5px 5px;
+    padding: 20px 20px 20px 80px;
+    color: #fff;
+    transition: all 0.4s ease;
+}
+
+.messageContent > .text .vn:before {
+    text-decoration: none;
+    content: url("../../public/icon_download.svg");
+    position: absolute;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    font-size: 28px;
+    border-radius: 0 20px 0 0;
+    color: #000;
+    background-color: #fff;
+    opacity: 0.3;
+    padding: 12px;
+    top: 0;
+    left: 0;
+}
+
+.messageContent > .text .vn:hover {
+    background: #551413;
+}
